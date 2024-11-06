@@ -3,7 +3,6 @@ const Dynamo = require('../common/dynamo-repository.js');
 
 const tableName = process.env.DYNAMODB_STUDENT_TABLE;
 exports.handler = async event =>{
-    console.log('event',event)
 
     if (!event.pathParameters || !event.pathParameters.ID){
         return Responses._400({message: 'ID is Required'});

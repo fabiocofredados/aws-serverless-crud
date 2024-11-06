@@ -28,7 +28,7 @@ const DynamoRepo = {
         if (!data || !data.Item){
             throw Error(`There was an error fetching user by ID ${ID} of ${TableName}`);
         }
-        console.log(data);
+        
         return data.Item;
     },
     async getAll(TableName){

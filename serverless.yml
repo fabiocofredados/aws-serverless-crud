@@ -21,8 +21,7 @@ custom:
 plugins:
     - serverless-deployment-bucket
     - serverless-dynamodb
-    - serverless-offline    
-
+    - serverless-offline
 
 provider:
   name: aws
@@ -95,4 +94,3 @@ resources:
                     - AttributeName: ID
                       KeyType: HASH
                 BillingMode: PAY_PER_REQUEST
-
