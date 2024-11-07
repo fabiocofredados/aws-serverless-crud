@@ -1,4 +1,4 @@
-service: serverless-crud-students
+service: students-api
 frameworkVersion: '3'
 
 package:
@@ -7,6 +7,7 @@ package:
 
 custom:
   DYNAMODB_STUDENT_TABLE: "students-${sls:stage}"
+
   dynamodb:
     stages:
       - local
@@ -82,15 +83,4 @@ functions:
           cors: true
 
 resources:
-    Resources:
-        StudentsTable:
-            Type: AWS::DynamoDB::Table
-            Properties:
-                TableName: ${self:custom.DYNAMODB_STUDENT_TABLE}
-                AttributeDefinitions:
-                    - AttributeName: ID
-                      AttributeType: S
-                KeySchema:
-                    - AttributeName: ID
-                      KeyType: HASH
-                BillingMode: PAY_PER_REQUEST
+    - ${file(resources/studentsDynamoTable.yml)}
