@@ -1,11 +1,13 @@
 {
-  "name": "aws-students-api",
+  "name": "students-api",
   "version": "1.0.0",
   "scripts": {
     "deploy-local": "serverless offline start --stage=local",
     "deploy-production": "serverless deploy --stage production",
     "deploy-staging": "serverless deploy --stage staging",
-    "test-local": "jest __tests__/endpoints/testSuite.js"
+    "test-local": "jest __tests__/endpoints/testSuite.js",
+    "undeploy-staging": "serverless remove --stage staging",
+    "undeploy-production": "serverless remove --stage production"
   },
   "dependencies": {
     "aws-dynamodb-local": "^0.0.11",
