@@ -1,0 +1,86 @@
+service: students-api
+frameworkVersion: '3'
+
+package:
+  individually: true
+  exclude:
+    - node_modules/**
+
+custom:
+  DYNAMODB_STUDENT_TABLE: "students-${sls:stage}"
+  dynamodb:
+    stages:
+      - local
+    start:
+      docker: true
+      port: 4566
+      inMemory: true
+      migrate: true
+      noStart: true
+      convertEmptyValues: true
+
+plugins:
+    - serverless-deployment-bucket
+    - serverless-dynamodb
+    - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  region: us-east-1
+  environment:
+    STAGE: "${sls:stage}"
+    DYNAMODB_STUDENT_TABLE: ${self:custom.DYNAMODB_STUDENT_TABLE}
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action: 
+              - dynamodb:Query
+              - dynamodb:Scan*
+              - dynamodb:Get*
+              - dynamodb:PutItem
+              - dynamodb:UpdateItem
+              - dynamodb:DeleteItem
+          Resource: 
+            - Fn::GetAtt: [StudentsTable, Arn]
+
+functions:
+  getStudent:
+    handler: lambdas/endpoints/getStudent.handler
+    events:
+      - http:
+          path: /{ID}
+          method: GET
+          cors: true
+  getAllStudent:
+    handler: lambdas/endpoints/getAllStudent.handler
+    events:
+      - http:
+          path: /
+          method: GET
+          cors: true
+  addStudent:
+    handler: lambdas/endpoints/addStudent.handler
+    events:
+      - http:
+          path: /
+          method: POST
+          cors: true
+  deleteStudent:
+    handler: lambdas/endpoints/deleteStudent.handler
+    events:
+      - http:
+          path: /{ID}
+          method: DELETE
+          cors: true
+  updateStudent:
+    handler: lambdas/endpoints/updateStudent.handler
+    events:
+      - http:
+          path: /{ID}
+          method: PUT
+          cors: true
+
+resources:
+  - ${file(resources/studentsDynamoTable.yml)}
