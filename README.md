@@ -1,7 +1,7 @@
 # Students CRUD API
 
 ## Requirements
-1. Create/Use an account on AWS 
+1. Create/Use an account on [AWS] (https://aws.amazon.com/)
 2. Configure the [AWS credentials] (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
 3. Install [Docker] (https://docs.docker.com/engine/install/) including docker compose
 
@@ -11,7 +11,7 @@
 ### Start the service locally
 
 1. docker compose up
-2. npm run start-local
+2. npm run deploy-local
 
 ### Add first student
 curl --location 'http://localhost:3000/local' --header 'Content-Type: application/json' --data '{ "ID": "1616", "name": "Harryson Ford"}'

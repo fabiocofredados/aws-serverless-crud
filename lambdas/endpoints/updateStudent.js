@@ -12,7 +12,6 @@ exports.handler = async event =>{
     student.ID = ID;
     
     const updatedStudent = await Dynamo.update(student, tableName).catch(err => {
-        console.log('Error updating Student into Dynamo DB',err);
         return null;
     });
 

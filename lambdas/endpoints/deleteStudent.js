@@ -10,7 +10,6 @@ exports.handler = async event =>{
     let ID = event.pathParameters.ID;
     
     const student = await Dynamo.delete(ID, tableName).catch(err => {
-        console.log('Error removing by ID from Dynamo DB',err);
         return null;
     });
 
