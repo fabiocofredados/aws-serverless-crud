@@ -2,6 +2,7 @@ service: students-api
 frameworkVersion: '3'
 
 package:
+  individually: true
   exclude:
     - node_modules/**
 
