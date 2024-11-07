@@ -7,7 +7,6 @@ package:
 
 custom:
   DYNAMODB_STUDENT_TABLE: "students-${sls:stage}"
-
   dynamodb:
     stages:
       - local
@@ -83,4 +82,4 @@ functions:
           cors: true
 
 resources:
-    - ${file(resources/studentsDynamoTable.yml)}
+  - ${file(resources/studentsDynamoTable.yml)}

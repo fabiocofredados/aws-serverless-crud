@@ -1,7 +1,8 @@
 
 const AWS = require("aws-sdk");
-require('aws-sdk/lib/maintenance_mode_message').suppress = true;
 const axios = require("axios");
+require('aws-sdk/lib/maintenance_mode_message').suppress = true;
+
 
 const STAGE = 'local';
 
