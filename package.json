@@ -1,5 +1,5 @@
 {
-  "name": "students-api",
+  "name": "student-api",
   "version": "1.0.0",
   "scripts": {
     "deploy-local": "serverless offline start --stage=local",
