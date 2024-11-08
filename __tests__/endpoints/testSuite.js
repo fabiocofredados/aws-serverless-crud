@@ -8,7 +8,7 @@ const STAGE = 'local';
 
 let endpoint = "http://localhost:3000/local";
 let dbClient;
-let TableName = `students-${STAGE}`;;
+let TableName = `student-${STAGE}`;;
 
 
 dbClient = new AWS.DynamoDB.DocumentClient({
