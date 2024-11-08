@@ -4,7 +4,7 @@ on:
     branches:
       - staging
 env:
-  _ENVIRONMENT: production
+  _ENVIRONMENT: staging
   
 jobs:
   DeployServerless:
