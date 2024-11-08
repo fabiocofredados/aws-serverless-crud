@@ -1,5 +1,5 @@
 Resources:
-    StudentsTable:
+    StudentTable:
         Type: AWS::DynamoDB::Table
         Properties:
             TableName: ${self:custom.DYNAMODB_STUDENT_TABLE}
